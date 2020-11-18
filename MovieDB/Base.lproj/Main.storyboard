@@ -36,16 +36,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataCell" rowHeight="280" id="gtY-r2-4Ba" customClass="CustomTableViewCell" customModule="MovieDB" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="280"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dataCell" rowHeight="300" id="gtY-r2-4Ba" customClass="CustomTableViewCell" customModule="MovieDB" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gtY-r2-4Ba" id="WJU-mu-EEe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Lebel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCS-jc-XEu">
+                                                    <rect key="frame" x="20" y="20" width="235" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x4I-1e-aYg">
-                                                    <rect key="frame" x="0.0" y="41" width="375" height="236"/>
+                                                    <rect key="frame" x="0.0" y="50" width="375" height="250"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="250" id="5TX-Dp-plU"/>
+                                                    </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="10" id="SEJ-MP-UJ2">
                                                         <size key="itemSize" width="150" height="210"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -54,7 +63,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="WB6-bB-chP" customClass="CustomCollectionViewCell" customModule="MovieDB" customModuleProvider="target">
-                                                            <rect key="frame" x="20" y="13" width="150" height="210"/>
+                                                            <rect key="frame" x="20" y="20" width="150" height="210"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hBe-Dd-hca">
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="210"/>
@@ -77,26 +86,19 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最受歡迎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCS-jc-XEu">
-                                                    <rect key="frame" x="15" y="11" width="235" height="28"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="x4I-1e-aYg" secondAttribute="trailing" id="4lR-VX-sAL"/>
-                                                <constraint firstItem="dCS-jc-XEu" firstAttribute="top" secondItem="WJU-mu-EEe" secondAttribute="topMargin" id="ANu-2E-qAk"/>
-                                                <constraint firstItem="x4I-1e-aYg" firstAttribute="top" secondItem="WJU-mu-EEe" secondAttribute="top" constant="41" id="KiE-79-RZl"/>
-                                                <constraint firstAttribute="bottom" secondItem="x4I-1e-aYg" secondAttribute="bottom" constant="3" id="RVD-Wd-xKG"/>
-                                                <constraint firstItem="dCS-jc-XEu" firstAttribute="leading" secondItem="WJU-mu-EEe" secondAttribute="leadingMargin" id="TFt-wu-MIW"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="dCS-jc-XEu" secondAttribute="bottom" constant="230" id="e9A-Qo-l3L"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="dCS-jc-XEu" secondAttribute="trailing" constant="110" id="f4b-tb-yG0"/>
-                                                <constraint firstItem="x4I-1e-aYg" firstAttribute="leading" secondItem="WJU-mu-EEe" secondAttribute="leading" id="fQR-Dd-635"/>
+                                                <constraint firstAttribute="trailing" secondItem="dCS-jc-XEu" secondAttribute="trailing" constant="120" id="40I-uX-oft"/>
+                                                <constraint firstAttribute="trailing" secondItem="x4I-1e-aYg" secondAttribute="trailing" id="N5Y-xC-r0p"/>
+                                                <constraint firstItem="x4I-1e-aYg" firstAttribute="leading" secondItem="WJU-mu-EEe" secondAttribute="leading" id="PVi-Fd-Tlg"/>
+                                                <constraint firstItem="dCS-jc-XEu" firstAttribute="top" secondItem="WJU-mu-EEe" secondAttribute="top" constant="20" id="Sdw-9Q-rdN"/>
+                                                <constraint firstAttribute="bottom" secondItem="x4I-1e-aYg" secondAttribute="bottom" id="T0F-Rg-3KX"/>
+                                                <constraint firstItem="dCS-jc-XEu" firstAttribute="leading" secondItem="WJU-mu-EEe" secondAttribute="leading" constant="20" id="aG9-tw-B92"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="myCollectionView" destination="x4I-1e-aYg" id="ubW-SK-OXg"/>
+                                            <outlet property="typeLabel" destination="dCS-jc-XEu" id="rm9-WR-7xk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

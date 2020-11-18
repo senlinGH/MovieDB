@@ -12,6 +12,7 @@ class CustomTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var myCollectionView: UICollectionView!
+    @IBOutlet weak var typeLabel: UILabel!
     
     
     
@@ -35,12 +36,12 @@ class CustomTableViewCell: UITableViewCell {
 extension CustomTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MoviesData[myCollectionView.tag].imageGallery.count
+        return MoviesData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CustomCollectionViewCell
-        cell.moviesImage.image = UIImage(named: MoviesData[myCollectionView.tag].imageGallery[indexPath.row])
+        cell.moviesImage.image = UIImage(named: MoviesData[indexPath.row])
         
         return cell
     }
