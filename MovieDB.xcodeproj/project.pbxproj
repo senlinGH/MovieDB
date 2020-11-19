@@ -52,7 +52,7 @@
 			children = (
 				1E123AEE255D715D001BF00F /* MovieDB */,
 				1E123AED255D715D001BF00F /* Products */,
-				1E391CA92564F5E10028263C /* Old */,
+				1E391CA92564F5E10028263C /* VercitalCollectionView */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,13 +106,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1E391CA92564F5E10028263C /* Old */ = {
+		1E391CA92564F5E10028263C /* VercitalCollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				1E123B03255D7649001BF00F /* MyCollectionViewCell.swift */,
 				1E123AF3255D715D001BF00F /* ViewController.swift */,
 			);
-			path = Old;
+			path = VercitalCollectionView;
 			sourceTree = "<group>";
 		};
 		1E391CAA2564F6550028263C /* Pic */ = {

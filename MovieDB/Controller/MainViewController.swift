@@ -38,6 +38,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 設定導覽列大標題
+        navigationController?.navigationBar.prefersLargeTitles = true
+        // 移除TableView分隔線
+        myTableView.separatorStyle = .none
+        
 
         // Do any additional setup after loading the view.
     }
