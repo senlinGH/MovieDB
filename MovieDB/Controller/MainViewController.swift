@@ -31,6 +31,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = myTableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! CustomTableViewCell
         cell.typeLabel.text = categoryMovies[indexPath.row]
+        cell.selectionStyle = .none //取消cell被選取的狀態
         
         return cell
         
