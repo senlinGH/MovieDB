@@ -18,6 +18,7 @@
 		1E394299256CCB360017D224 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E394298256CCB360017D224 /* TableViewController.swift */; };
 		1E39429D256CD4C00017D224 /* HorizontalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E39429C256CD4C00017D224 /* HorizontalCollectionViewController.swift */; };
 		1E39429F256CDBBF0017D224 /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E39429E256CDBBF0017D224 /* HorizontalCollectionViewCell.swift */; };
+		1E3942A3256D09BC0017D224 /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3942A2256D09BC0017D224 /* TMDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		1E394298256CCB360017D224 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1E39429C256CD4C00017D224 /* HorizontalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewController.swift; sourceTree = "<group>"; };
 		1E39429E256CDBBF0017D224 /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
+		1E3942A2256D09BC0017D224 /* TMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				1E391CA72563D68C0028263C /* MoviesModel.swift */,
+				1E3942A2256D09BC0017D224 /* TMDB.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				1E39429F256CDBBF0017D224 /* HorizontalCollectionViewCell.swift in Sources */,
 				1E123AF4255D715D001BF00F /* VerticalViewController.swift in Sources */,
 				1E39429D256CD4C00017D224 /* HorizontalCollectionViewController.swift in Sources */,
+				1E3942A3256D09BC0017D224 /* TMDB.swift in Sources */,
 				1E123AF0255D715D001BF00F /* AppDelegate.swift in Sources */,
 				1E123B04255D7649001BF00F /* VerticalCollectionViewCell.swift in Sources */,
 				1E394299256CCB360017D224 /* TableViewController.swift in Sources */,

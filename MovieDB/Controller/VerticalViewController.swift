@@ -12,7 +12,7 @@ class VerticalViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @IBOutlet weak var vercitalCollectionView: UICollectionView!
     
-    //MARK - viewDidLoad
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
