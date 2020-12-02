@@ -188,7 +188,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="vhF-m5-v4F"/>
                     <connections>
-                        <outlet property="vercitalCollectionView" destination="FQR-Ud-TOu" id="QQP-Nc-qTC"/>
+                        <outlet property="verticalCollectionView" destination="FQR-Ud-TOu" id="A2S-8y-9AL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

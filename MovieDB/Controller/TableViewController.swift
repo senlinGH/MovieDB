@@ -10,7 +10,7 @@ import UIKit
 
 var movieData = [ "movie1", "movie2", "movie3", "movie4", "movie5", "movie6", "movie7", "movie8", "movie9", "movie10", "movie11", "movie12", "movie13", "movie14", "movie15", "movie16", "movie17", "movie18", "movie19", "movie20" ]
 
-var categoryMovies = ["最受歡迎的電影", "評分最佳的影片", "即將在戲院上映", "奧斯卡最佳影片", "最佳票房", "熱門電影"]
+var categoryMovies = ["上映中的電影", "熱門的電影", "即將在戲院上映", "評分最高的電影"]
 
 class TableViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
 

@@ -8,8 +8,10 @@
 
 import UIKit
 
-var TMDBs = [TMDB_Info]()
+var tmdbs = [TMDB_Info]()
 var posters = [PosterPath]()
+var posterList = [String]() //儲存電影海報的陣列
+var pageNum = 1
 
 class HorizontalCollectionViewController: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -28,7 +30,6 @@ class HorizontalCollectionViewController: UITableViewCell, UICollectionViewDeleg
         // CollectionView加上背景圖片
         horizontalCollectionView.backgroundView = UIImageView(image: UIImage(named: "collection_background"))
         
-        downloadJson()  //下載JSON api
         downloadPosters()   //下載海報
     }
 
@@ -42,57 +43,83 @@ class HorizontalCollectionViewController: UITableViewCell, UICollectionViewDeleg
     
     // MARK: - HorizontalCollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieData.count
+        return posterList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = horizontalCollectionView.dequeueReusableCell(withReuseIdentifier: "horizontalCollectionCell", for: indexPath) as! HorizontalCollectionViewCell
-        cell.horizontalImageView.image = UIImage(named: movieData[indexPath.row])
+        let tmdbList = posterList[indexPath.row]
+        
+        if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500/" + tmdbList) {
+            URLSession.shared.dataTask(with: imageURL) {
+                (data, response, error) in
+                if let newData = data {
+                    DispatchQueue.main.async {
+                        cell.horizontalImageView.image = UIImage(data:newData)
+                    }
+                }
+            }.resume()  //啟動dataTask任務
+        }
         
         return cell
     }
     
-    // MARK: - URL
-    final let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=fa36146a9c9339288ef9538e4bb1abb6&language=zh-TW&page=1&region=TW")
     
-    // MARK: - DownloadJASON
-    func downloadJson() {
-        guard let downloadURL = url else { return }
-        URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
-            guard let data = data, error == nil, urlResponse !== nil else {
-                print("下載JSON錯誤")
-                return
-            }
-            print("JSON下載完成")
-            do {
-                let decoder = JSONDecoder()
-                let downloadTMDBs = try decoder.decode(TMDB.self, from: data)
-                TMDBs = downloadTMDBs.results
-//                print(TMDBs)
-            } catch {
-                print("下載JSON之後錯誤")
-            }
-        }.resume()
-    }
 
     // MARK: - DownloadPosters
     func downloadPosters() {
-        guard let downloadURL = url else { return }
-        URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
-            guard let data = data, error == nil, urlResponse !== nil else {
-                print("電影海報下載錯誤")
-                return
-            }
-            print("電影海報下載完成")
-            do {
-                let decoder = JSONDecoder()
-                let downloadPosters = try decoder.decode(PosterPaths.self, from: data)
-                print(downloadPosters.results[0].poster_path)
-            } catch {
-                print("電影海報下載之後錯誤")
-            }
-        }.resume()
+        
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=fa36146a9c9339288ef9538e4bb1abb6&language=zh-TW&page=\(pageNum)&region=TW")
+        
+        if let downloadURL = url {
+            URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
+                guard let data = data, error == nil, urlResponse !== nil else {
+                    print("電影海報下載錯誤")
+                    return
+                }
+                print("電影海報下載完成")
+                do {
+                    let decoder = JSONDecoder()
+                    let downloadPosterPaths = try decoder.decode(PosterPaths.self, from: data)
+                    let totalPages = downloadPosterPaths.total_pages
+                    
+                    if pageNum <= totalPages {
+                        
+                        var item = 0
+                        while item < downloadPosterPaths.results.count {
+                            if let singlePoster = downloadPosterPaths.results[item].poster_path {
+
+                                posterList.append(singlePoster)
+                                item += 1
+                            }
+                            else { item += 1 }  //如果該筆資料沒有海報也要+1
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.horizontalCollectionView.reloadData()
+                        }
+                        
+                    }
+                } catch {
+                    print("do敘述內容錯誤")
+                }
+                print("電影海報共\(posterList.count)筆")
+            }.resume()
+        }
+        
+        
+    }
+    
+    
+    // MARK: - WillDisPlay
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let lastItem = posterList.count - 1
+        if indexPath.row == lastItem {
+            pageNum += 1
+            downloadPosters()
+        }
+
     }
     
     
