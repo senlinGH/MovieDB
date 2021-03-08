@@ -726,14 +726,67 @@
             <objects>
                 <viewController id="Ctk-Zt-Dwi" customClass="DiscoverViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fBu-Tw-WTY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Woh-rB-Scs">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1800"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="GGe-Jf-jac" userLabel="Header View">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="a9l-Ef-CE5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qan-YA-iVk">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sliderCell" id="gQ0-66-3Aa" customClass="SliderCollectionCell" customModule="MovieDB" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J2z-bd-5it">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YhR-7V-ZlU">
+                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="YhR-7V-ZlU" secondAttribute="trailing" id="8N1-eX-Erx"/>
+                                                            <constraint firstAttribute="bottom" secondItem="YhR-7V-ZlU" secondAttribute="bottom" id="Mfy-qN-82c"/>
+                                                            <constraint firstItem="YhR-7V-ZlU" firstAttribute="leading" secondItem="J2z-bd-5it" secondAttribute="leading" id="kHh-QX-eta"/>
+                                                            <constraint firstItem="YhR-7V-ZlU" firstAttribute="top" secondItem="J2z-bd-5it" secondAttribute="top" id="t0m-gP-8gL"/>
+                                                        </constraints>
+                                                    </collectionViewCellContentView>
+                                                    <connections>
+                                                        <outlet property="sliderImage" destination="YhR-7V-ZlU" id="Qq0-b2-8Bs"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
+                                        </collectionView>
+                                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Las-TD-kpW">
+                                            <rect key="frame" x="50" y="213" width="275" height="37"/>
+                                        </pageControl>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="a9l-Ef-CE5" secondAttribute="bottom" id="BoF-Uc-cP4"/>
+                                        <constraint firstAttribute="trailing" secondItem="a9l-Ef-CE5" secondAttribute="trailing" id="MYw-Px-2IX"/>
+                                        <constraint firstItem="a9l-Ef-CE5" firstAttribute="leading" secondItem="GGe-Jf-jac" secondAttribute="leading" id="Mu9-b2-i9k"/>
+                                        <constraint firstItem="a9l-Ef-CE5" firstAttribute="top" secondItem="GGe-Jf-jac" secondAttribute="top" id="WRS-NJ-3VT"/>
+                                        <constraint firstItem="Las-TD-kpW" firstAttribute="leading" secondItem="GGe-Jf-jac" secondAttribute="leading" constant="50" id="iJi-ca-GNl"/>
+                                        <constraint firstAttribute="trailing" secondItem="Las-TD-kpW" secondAttribute="trailing" constant="50" id="iTG-B2-DO9"/>
+                                        <constraint firstAttribute="bottom" secondItem="Las-TD-kpW" secondAttribute="bottom" id="j75-eU-X5J"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="popularCell" id="w3i-ju-szq" customClass="PopularTableViewCell" customModule="MovieDB" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="400.33334350585938"/>
+                                        <rect key="frame" x="0.0" y="278" width="375" height="400.33334350585938"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w3i-ju-szq" id="4Qi-8u-LRH">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="400.33334350585938"/>
@@ -834,7 +887,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="nowPlayingCell" rowHeight="250" id="TQZ-Fn-pz1" customClass="NowPlayingTableViewCell" customModule="MovieDB" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="428.33334350585938" width="375" height="250"/>
+                                        <rect key="frame" x="0.0" y="678.33334350585938" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TQZ-Fn-pz1" id="WgW-xY-Ckw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -934,7 +987,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="topRateCell" rowHeight="270" id="kpm-sJ-pVe" customClass="TopRateTableViewCell" customModule="MovieDB" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="678.33334350585938" width="375" height="270"/>
+                                        <rect key="frame" x="0.0" y="928.33334350585938" width="375" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kpm-sJ-pVe" id="iqz-Ot-k4Z">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
@@ -1034,7 +1087,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="upcomingCell" rowHeight="450" id="qyg-yA-ybe" customClass="UpcomingTableViewCell" customModule="MovieDB" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="948.33334350585938" width="375" height="450"/>
+                                        <rect key="frame" x="0.0" y="1198.3333435058594" width="375" height="450"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qyg-yA-ybe" id="Zc2-r8-WdD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
@@ -1137,14 +1190,16 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="電影" id="Pgc-O0-2Tn"/>
                     <navigationItem key="navigationItem" title="MovieDB" id="7qe-Zg-KEB"/>
-                    <size key="freeformSize" width="375" height="1600"/>
+                    <size key="freeformSize" width="375" height="1800"/>
                     <connections>
                         <outlet property="myTableView" destination="Woh-rB-Scs" id="Mw3-Pt-faw"/>
+                        <outlet property="pageControl" destination="Las-TD-kpW" id="3Rk-hR-hdK"/>
+                        <outlet property="sliderCollectionView" destination="a9l-Ef-CE5" id="33G-UA-kKp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hf-sn-oEE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2583" y="2045"/>
+            <point key="canvasLocation" x="-2671.1999999999998" y="2044.5812807881775"/>
         </scene>
         <!--熱門-->
         <scene sceneID="hpK-ge-uJP">
