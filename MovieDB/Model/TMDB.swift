@@ -8,34 +8,74 @@
 
 import Foundation
 
-struct TMDB: Codable {
-    let results: [TMDB_Info]
+struct TmdbMovies: Codable {
+    let results: [MovieDetailData]
     let total_pages: Int
 }
 
-struct TMDB_Info: Codable {
-    let popularity: Double?
-    let video: Bool?
-    let genre_ids: [ Int ]?
-    let overview: String?
-    let release_date: String?
-    let original_title: String?
+struct MovieDetailData: Codable {
+    
+    let overview: String
+    let release_date: String
     let poster_path: String?
-    let adult: Bool?
     let backdrop_path: String?
-    let vote_average: Double?
-    let title: String?
+    let vote_average: Double
+    let title: String
     let vote_count: Int?
-    let id: Int?
-    let original_language: String?
+    let id: Int
+    let original_title: String
 }
 
-// MARK: - 電影海報
-struct PosterPaths: Codable {
-    let results: [PosterPath]
-    let total_pages: Int
+// MARK: - 電影預告
+struct MovieVideo: Codable {
+    let results: [VideoInfo]
 }
 
-struct PosterPath: Codable {
-    let poster_path: String?
+struct VideoInfo: Codable ,Equatable {
+    let key: String
+    let type: String
+    let size: Int
+}
+
+// MARK: - 電影分級
+struct MovieCertification: Codable {
+    let results: [DetailCertification]
+    
+}
+
+struct DetailCertification: Codable {
+    let iso_3166_1: String?
+    let release_dates: [RelesaseDateDetail]
+}
+
+struct RelesaseDateDetail: Codable {
+    let certification: String
+}
+
+// MARK: - 電影詳細資料
+struct MovieDetail: Codable {
+    let genres: [GenresInfo]
+    let runtime: Int?   
+}
+
+struct GenresInfo: Codable {
+    let name: String?
+}
+
+// MARK: - 卡司陣容
+struct CastAndCrew: Codable {
+    let cast: [CastDetail]
+    let crew: [CrewDetail]
+}
+
+struct CastDetail: Codable {
+    let name: String?
+    let profile_path: String?
+    let character: String?
+}
+
+struct CrewDetail: Codable {
+    let name: String?
+    let profile_path: String?
+    let job: String?
 }
