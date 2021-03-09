@@ -225,7 +225,7 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
         layout?.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         let screenWidth = UIScreen.main.bounds.width    // 取得螢幕寬度
-        layout?.itemSize = CGSize(width: screenWidth, height: screenWidth / 1.5) // Cell的寬、高
+        layout?.itemSize = CGSize(width: screenWidth, height: screenWidth / 1.7) // Cell的寬、高
         
         // 滑動方向為「垂直」的話即「上下」的間距;滑動方向為「平行」則為「左右」的間距
         layout?.minimumLineSpacing = 0
@@ -234,7 +234,7 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
         sliderCollectionView.showsHorizontalScrollIndicator = false //隱藏水平滑動bar
         
         // 動態調整HeaderView的高度
-        myTableView.tableHeaderView?.frame.size.height = screenWidth / 1.5
+        myTableView.tableHeaderView?.frame.size.height = screenWidth / 1.7
         
     }
     
