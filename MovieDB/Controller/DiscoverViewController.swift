@@ -49,9 +49,6 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         pageControl.numberOfPages = sliderImageArr.count
         pageControl.currentPage = 0
         
-        DispatchQueue.main.async {
-            self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
-        }
         
         
     }
@@ -203,6 +200,7 @@ extension DiscoverViewController: selectedCollectionItemDelegate {
     
 }
 
+// MARK: - SliderCollectionView DataSource & Delegate
 extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -216,7 +214,7 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
-    
+    // 設定CollectionViewFlowLayout
     func setSliderCollectionViewFlowLayout() {
         let layout = sliderCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.scrollDirection = .horizontal    // 設定水平滑動
@@ -238,6 +236,7 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
         
     }
     
+    // 變更圖片方法
     @objc func changeImage() {
         if counter < sliderImageArr.count {
             let index = IndexPath.init(item: counter, section: 0)
@@ -254,20 +253,51 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
+    // 即將顯示Cell的方法
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         pageControl.currentPage = indexPath.row
     }
     
+    // View即將出現的方法
+    override func viewWillAppear(_ animated: Bool) {
+        // 執行Timer計時器
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
+        }
+    }
+    
+    // MARK: - 關閉畫面後執行的方法
     // 離開畫面停止Timer
-    // Timer 如同執行緒，若沒停止它的話，它是會一直在背景執行的。所以必須在離開畫面時去停止它。
     override func viewDidDisappear(_ animated: Bool) {
+        /* Timer 如同執行緒，若沒停止它的話，它是會一直在背景執行的。所以必須在離開畫面時去停止它。 */
+        
         //  將timer執行緒停止
         if self.timer != nil {
             self.timer?.invalidate() //停止timer的循環
         }
     }
     
-    
+    // MARK: - 頂部圖片點擊跳轉
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        switch indexPath.row {
+        case 0:
+            if let vc = mainStoryboard.instantiateViewController(identifier: "popularViewController") as? PopularViewController {
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        case 1:
+            if let vc = mainStoryboard.instantiateViewController(identifier: "nowPlayingViewController") as? NowPlayingViewController {
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        case 2:
+            if let vc = mainStoryboard.instantiateViewController(identifier: "topRatedViewController") as? TopRatedViewController {
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        default:
+            print("SliderImage跳轉失敗！")
+        }
+    }
     
     
     

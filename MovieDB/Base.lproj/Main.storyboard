@@ -11,7 +11,7 @@
         <!--上映中-->
         <scene sceneID="OA6-Ad-Occ">
             <objects>
-                <viewController id="gvB-0p-trQ" customClass="NowPlayingViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nowPlayingViewController" id="gvB-0p-trQ" customClass="NowPlayingViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fRq-cm-z2o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -797,7 +797,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <state key="normal" title="全部顯示"/>
                                                     <connections>
-                                                        <segue destination="APe-h0-ZBd" kind="show" id="40D-t1-EkB"/>
+                                                        <segue destination="APe-h0-ZBd" kind="show" identifier="" id="40D-t1-EkB"/>
                                                     </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6ar-aK-bBE">
@@ -904,7 +904,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <state key="normal" title="全部顯示"/>
                                                     <connections>
-                                                        <segue destination="gvB-0p-trQ" kind="show" id="rvl-ya-dhP"/>
+                                                        <segue destination="gvB-0p-trQ" kind="show" identifier="" id="rvl-ya-dhP"/>
                                                     </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jrI-nO-byn">
@@ -1004,7 +1004,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <state key="normal" title="全部顯示"/>
                                                     <connections>
-                                                        <segue destination="xl2-OF-xJj" kind="show" id="zIq-5o-rm1"/>
+                                                        <segue destination="xl2-OF-xJj" kind="show" identifier="" id="zIq-5o-rm1"/>
                                                     </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FBd-dA-JR9">
@@ -1204,7 +1204,7 @@
         <!--熱門-->
         <scene sceneID="hpK-ge-uJP">
             <objects>
-                <viewController id="APe-h0-ZBd" customClass="PopularViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popularViewController" id="APe-h0-ZBd" customClass="PopularViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qKp-cb-7zj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1356,7 +1356,7 @@
         <!--評分最高-->
         <scene sceneID="SyH-4g-pcY">
             <objects>
-                <viewController id="xl2-OF-xJj" customClass="TopRatedViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="topRatedViewController" id="xl2-OF-xJj" customClass="TopRatedViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UJs-fS-1oy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
