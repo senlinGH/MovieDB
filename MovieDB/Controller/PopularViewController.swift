@@ -50,7 +50,7 @@ class PopularViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         // 電影封面海報
         if let posterPath = data[indexPath.row].poster_path {
-            let posterPathImageURL = URL(string: "https://image.tmdb.org/t/p/w780" + posterPath)
+            let posterPathImageURL = URL(string: "https://image.tmdb.org/t/p/w342" + posterPath)
 
             cell.imageView.kf.setImage(with: posterPathImageURL, placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
         }

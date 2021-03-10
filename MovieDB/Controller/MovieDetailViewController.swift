@@ -38,21 +38,6 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var data: MovieDetailData!
     var AllGenres = [GenresInfo]()
     
-    
-    
-    // 存放電影資訊
-    var movieTitle = ""
-    var originalMovieTitle = ""
-    var overview = ""
-    var backdropPathImageURL = ""
-    var posterPathImageURL = ""
-    var releaseDate = ""
-    var voteAverage = 0.0
-    var voteCount = 0
-    var movieID = 0
-
-    
-    
     var posterPathURL = ""
     var videoKey = ""
     var certification = "未經分級"
@@ -125,14 +110,14 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             cell.titleLabel.text = data.title
             cell.originalTitleLabel.text = data.original_title + "(原始片名)"
             
-            if data.release_date != "" {
-                // 擷取字串1..4個字元
-                let stringToIndex = data.release_date.index(data.release_date.startIndex, offsetBy: 4)
-                let getStringToWord = String(data.release_date[..<stringToIndex])
-                cell.releaseDateLabel.text = getStringToWord
-            } else {
-                cell.releaseDateLabel.text = ""
-            }
+            if let releaseDate = data.release_date {
+                if releaseDate != "" {
+                    // 擷取字串1..4個字元
+                    let stringToIndex = releaseDate.index(releaseDate.startIndex, offsetBy: 4)
+                    let getStringToWord = String(releaseDate[..<stringToIndex])
+                    cell.releaseDateLabel.text = getStringToWord
+                } else { cell.releaseDateLabel.text = "" }
+            } else { cell.releaseDateLabel.text = "" }
             
             
             cell.certificationLabel.text = certification
@@ -158,7 +143,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.moreBtn.isHidden = true
             }
             
-            cell.overviewLabel.text = "概要\n\(data.overview)"
+            cell.overviewLabel.text = data.overview
             cell.AllGenres = AllGenres
             cell.voteAverage.text = "⭐️ \(data.vote_average)"
             
@@ -177,6 +162,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             let cell = tableView.dequeueReusableCell(withIdentifier: "castCell", for: indexPath) as! CastTableViewCell
             cell.cast = self.cast
             cell.selectionStyle = .none //取消選取效果
+            cell.delegate = self
             return cell
         case 4:
         let cell = tableView.dequeueReusableCell(withIdentifier: "crewCell", for: indexPath) as! CrewTableViewCell
@@ -434,6 +420,17 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
 }
 
 
-
+extension MovieDetailViewController: selectedCastCollectionItemDelegate {
+    
+    func selectedCollectionItem(castName: String, castPersonID: Int) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let VC = mainStoryBoard.instantiateViewController(identifier: "castAndCrewViewController") as! CastAndCrewViewController
+        
+        VC.castName = castName
+        VC.castPersonID = castPersonID
+        navigationController?.pushViewController(VC, animated: true)
+    }
+    
+}
 
 

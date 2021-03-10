@@ -63,16 +63,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 }
         cell.titleLabel.text = result[indexPath.row].title
         
-        let releaseDate = result[indexPath.row].release_date
         let voteAverage = result[indexPath.row].vote_average
-        if releaseDate != "" {
-            // 擷取字串1..4個字元
-            let stringToIndex = releaseDate.index(releaseDate.startIndex, offsetBy: 4)
-            let getStringToWord = String(releaseDate[..<stringToIndex])
-            cell.detailsLbl.text = "\(getStringToWord) • \(voteAverage)/10"
-        } else {
-            cell.detailsLbl.text = "\(voteAverage)/10"
-        }
+        if let releaseDate = result[indexPath.row].release_date {
+            if releaseDate != "" {
+                // 擷取字串1..4個字元
+                let stringToIndex = releaseDate.index(releaseDate.startIndex, offsetBy: 4)
+                let getStringToWord = String(releaseDate[..<stringToIndex])
+                cell.detailsLbl.text = "\(getStringToWord) • \(voteAverage)/10"
+            } else { cell.detailsLbl.text = "\(voteAverage)/10" }
+        } else { cell.detailsLbl.text = "\(voteAverage)/10" }
         
         cell.overviewLbl.text = result[indexPath.row].overview
         cell.selectionStyle = .none //取消選取效果

@@ -51,7 +51,7 @@ class UpcomingViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         // 電影封面海報
         if let posterPath = data[indexPath.row].poster_path {
-            let posterPathImageURL = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
+            let posterPathImageURL = URL(string: "https://image.tmdb.org/t/p/w342" + posterPath)
             
             cell.imageView.kf.setImage(with: posterPathImageURL, placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
         }

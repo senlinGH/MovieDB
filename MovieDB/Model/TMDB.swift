@@ -16,7 +16,7 @@ struct TmdbMovies: Codable {
 struct MovieDetailData: Codable {
     
     let overview: String
-    let release_date: String
+    let release_date: String?
     let poster_path: String?
     let backdrop_path: String?
     let vote_average: Double
@@ -69,6 +69,7 @@ struct CastAndCrew: Codable {
 }
 
 struct CastDetail: Codable {
+    let id: Int
     let name: String?
     let profile_path: String?
     let character: String?
@@ -78,4 +79,9 @@ struct CrewDetail: Codable {
     let name: String?
     let profile_path: String?
     let job: String?
+}
+
+struct MovieCreditsForPerson: Codable {
+    let cast: [MovieDetailData]
+    let id : Int
 }

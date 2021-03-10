@@ -9,10 +9,14 @@
 import UIKit
 import Kingfisher
 
+protocol selectedCastCollectionItemDelegate: class {
+    func selectedCollectionItem(castName: String, castPersonID: Int)
+}
+
 class CastTableViewCell: UITableViewCell {
     
     var cast = [CastDetail]()
-    
+    weak var delegate: selectedCastCollectionItemDelegate?
 
     @IBOutlet weak var castCollectionView: UICollectionView!
     
@@ -69,6 +73,13 @@ extension CastTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         cell.roleNameLbl.text = characterName
         
         return cell
+    }
+    
+    // MARK: - Pass Data To MovieDetailViewController
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        delegate?.selectedCollectionItem(castName: cast[indexPath.row].name ?? "", castPersonID: cast[indexPath.row].id)
+        
     }
     
     
