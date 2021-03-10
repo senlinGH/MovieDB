@@ -49,7 +49,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         pageControl.numberOfPages = sliderImageArr.count
         pageControl.currentPage = 0
         
-        
+        myTableView.showsVerticalScrollIndicator = false // 隱藏TableView垂直滑動的bar
         
     }
     
@@ -66,21 +66,25 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = myTableView.dequeueReusableCell(withIdentifier: "popularCell", for: indexPath) as! PopularTableViewCell
             cell.fetchResultData = popularData
             cell.delegate = self
+            cell.selectionStyle = .none //取消選取效果
             return cell
         case 1:
             let cell = myTableView.dequeueReusableCell(withIdentifier: "nowPlayingCell", for: indexPath) as! NowPlayingTableViewCell
             cell.fetchResultData = nowPlayingData
             cell.delegate = self
+            cell.selectionStyle = .none //取消選取效果
             return cell
         case 2:
             let cell = myTableView.dequeueReusableCell(withIdentifier: "topRateCell", for: indexPath) as! TopRateTableViewCell
             cell.fetchResultData = topRateData
             cell.delegate = self
+            cell.selectionStyle = .none //取消選取效果
             return cell
         case 3:
         let cell = myTableView.dequeueReusableCell(withIdentifier: "upcomingCell", for: indexPath) as! UpcomingTableViewCell
         cell.fetchResultData = upcomingData
         cell.delegate = self
+        cell.selectionStyle = .none //取消選取效果
         return cell
         default:
             fatalError("Cell錯誤")
