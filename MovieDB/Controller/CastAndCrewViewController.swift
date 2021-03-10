@@ -91,6 +91,58 @@ extension CastAndCrewViewController: UICollectionViewDataSource, UICollectionVie
         flowLayout?.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20) //Section間的上下左右邊距
     }
     
+    //MARK: - 長按選單預覽
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let configuration = UIContextMenuConfiguration(identifier: indexPath.row as NSCopying, previewProvider: {
+            
+            guard let movieDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return nil }
+            
+            let selectedMovie = self.data[indexPath.row]
+            movieDetailVC.data = selectedMovie
+            
+            return movieDetailVC
+        }) { action in
+            
+            let shareAction = UIAction(title: "分享", image: UIImage(systemName: "square.and.arrow.up")) {
+                _ in
+                
+                let shareMovieURL = URL(string: "https://www.themoviedb.org/movie/\(self.data[indexPath.row].id)?language=zh-TW")
+                
+                let activityController: UIActivityViewController
+                
+                activityController = UIActivityViewController(activityItems: [shareMovieURL!], applicationActivities: nil)
+                
+                self.present(activityController, animated: true, completion: nil)
+            }
+            
+            return UIMenu(title: "", children: [shareAction])
+        }
+        
+        return configuration
+        
+    }
+    
+    // 呈現完整內容
+    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        
+        
+        guard let selectedItem = configuration.identifier as? Int else {
+            print("未能檢索到項目號碼")
+            return
+        }
+        
+        guard let movieDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { return }
+        
+        let selectedMovie = self.data[selectedItem]
+        movieDetailViewController.data = selectedMovie
+        
+        animator.preferredCommitStyle = .pop
+        animator.addCompletion {
+            self.show(movieDetailViewController, sender: self)
+        }
+    }
+    
     // MARK: - Pass Data To MovieDetailViewController
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)

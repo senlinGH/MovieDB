@@ -24,7 +24,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             // 取得背景海報
             if let backdropPath_Key = data.backdrop_path {
                 let backdropPathImageURL = "https://image.tmdb.org/t/p/w780\(backdropPath_Key)"
-                headerImageView.kf.setImage(with: URL(string: backdropPathImageURL), placeholder: nil, options: [.transition(.fade(0.3))], progressBlock: nil)
+                headerImageView.kf.setImage(with: URL(string: backdropPathImageURL), placeholder: UIImage(named: "collection_background"), options: [.transition(.fade(0.3))], progressBlock: nil)
             }
         }
     }
