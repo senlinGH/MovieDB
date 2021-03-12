@@ -13,8 +13,10 @@ class CastAndCrewViewController: UIViewController {
     @IBOutlet weak var castAndCrewCollectionView: UICollectionView!
     
     var data = [MovieDetailData]()
-    var castPersonID = 0
-    var castName = ""
+    var personID = 0
+    var name = ""
+    var cellIdentifier = ""
+    var job = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +25,8 @@ class CastAndCrewViewController: UIViewController {
         castAndCrewCollectionView.delegate = self
         
         setFlowLayout()
-        fetchCastData(PersonID: castPersonID)
-        self.title = castName  // 標題
+        fetchCastData(PersonID: personID)
+        self.title = name  // 標題
     }
     
     // 抓個人檔案資料
@@ -39,11 +41,27 @@ class CastAndCrewViewController: UIViewController {
                 DispatchQueue.main.async {
                     do {
                         let ResultData = try JSONDecoder().decode(MovieCreditsForPerson.self, from: data!)
-                        for item in ResultData.cast {
-                            guard let voteCount = item.vote_count else { return }
-                            if voteCount >= 220 {
-                                self.data.append(item)
+                        
+                        switch self.cellIdentifier {
+                        case "cast":
+                            // 篩選演員電影作品評論超過220筆的電影
+                            for item in ResultData.cast {
+                                guard let voteCount = item.vote_count else { return }
+                                if voteCount >= 220 {
+                                    self.data.append(item)
+                                }
                             }
+                        case "crew":
+                            // 篩選演員電影作品評論超過220筆的電影
+                            for item in ResultData.crew {
+                                guard let voteCount = item.vote_count else { return }
+                                guard let job = item.job else { return }
+                                if voteCount >= 220 && job == self.job {
+                                    self.data.append(item)
+                                }
+                            }
+                        default:
+                            fatalError("載入人物電影作品清單錯誤！！！")
                         }
                         self.castAndCrewCollectionView.reloadData()
                     } catch let error {

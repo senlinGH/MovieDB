@@ -24,6 +24,7 @@ struct MovieDetailData: Codable {
     let vote_count: Int?
     let id: Int
     let original_title: String
+    let job: String?
 }
 
 // MARK: - 電影預告
@@ -76,6 +77,7 @@ struct CastDetail: Codable {
 }
 
 struct CrewDetail: Codable {
+    let id: Int
     let name: String?
     let profile_path: String?
     let job: String?
@@ -83,5 +85,6 @@ struct CrewDetail: Codable {
 
 struct MovieCreditsForPerson: Codable {
     let cast: [MovieDetailData]
+    let crew: [MovieDetailData]
     let id : Int
 }

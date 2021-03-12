@@ -44,6 +44,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var runtime = ""
     var spinner = UIActivityIndicatorView()     // 建立旋轉指示器的物件
     var cast = [CastDetail]()
+    var crew = [CrewDetail]()
     var crewImageArr = [String]()
     var crewNameArr = [String]()
     var crewJobArr = [String]()
@@ -165,12 +166,14 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             cell.delegate = self
             return cell
         case 4:
-        let cell = tableView.dequeueReusableCell(withIdentifier: "crewCell", for: indexPath) as! CrewTableViewCell
-        cell.crewImageArr = self.crewImageArr
-        cell.crewNameArr = self.crewNameArr
-        cell.crewJobArr = self.crewJobArr
-        cell.selectionStyle = .none //取消選取效果
-        return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "crewCell", for: indexPath) as! CrewTableViewCell
+            //        cell.crewImageArr = self.crewImageArr
+            //        cell.crewNameArr = self.crewNameArr
+            //        cell.crewJobArr = self.crewJobArr
+            cell.crew = self.crew
+            cell.selectionStyle = .none //取消選取效果
+            cell.delegate = self
+            return cell
         default:
             fatalError("無法實例化表查看單元格詳細信息視圖控制器")
         }
@@ -343,7 +346,7 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - 取得電影卡司與團隊
     func getCastAndCrew(movieID: Int) {
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieID)/credits?api_key=fa36146a9c9339288ef9538e4bb1abb6&language=zh-TW")
-        else { return }
+            else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -354,26 +357,12 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
                     do {
                         let myData = try JSONDecoder().decode(CastAndCrew.self, from: data!)
                         self.cast = myData.cast
-                                    
-                        // 只取得導演、監製、編劇的照片和資料
+                        
+                        // 只取得導演、監製、編劇的資料
                         for item in myData.crew {
                             if (item.job == "Director") || (item.job == "Producer") || (item.job == "Screenplay") || (item.job == "Writer") {
                                 
-                                // 個人照
-                                if let imagePath = item.profile_path {
-                                    self.crewImageArr.append(imagePath)
-                                } else { self.crewImageArr.append("") }
-                                
-                                // 名字
-                                if let name = item.name {
-                                    self.crewNameArr.append(name)
-                                } else { self.crewNameArr.append("無資料") }
-                                
-                                // 職業
-                                if let job = item.job {
-                                    self.crewJobArr.append(job)
-                                } else { self.crewJobArr.append("無資料") }
-                                
+                                self.crew.append(item)
                             }
                         }
                         self.tableview.reloadData()
@@ -420,17 +409,17 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
 }
 
 
-extension MovieDetailViewController: selectedCastCollectionItemDelegate {
+extension MovieDetailViewController: selectedCastAndCrewCollectionItemDelegate {
     
-    func selectedCollectionItem(castName: String, castPersonID: Int) {
+    func selectedCollectionItem(name: String, personID: Int, cellIdentifier: String, job: String) {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let VC = mainStoryBoard.instantiateViewController(identifier: "castAndCrewViewController") as! CastAndCrewViewController
         
-        VC.castName = castName
-        VC.castPersonID = castPersonID
+        VC.name = name
+        VC.personID = personID
+        VC.cellIdentifier = cellIdentifier
+        VC.job = job
         navigationController?.pushViewController(VC, animated: true)
     }
     
 }
-
-

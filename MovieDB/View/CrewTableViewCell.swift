@@ -11,9 +11,9 @@ import Kingfisher
 
 class CrewTableViewCell: UITableViewCell {
 
-    var crewImageArr = [String]()
-    var crewNameArr = [String]()
-    var crewJobArr = [String]()
+    var crew = [CrewDetail]()
+    let cellIdentifier = "crew"
+    weak var delegate: selectedCastAndCrewCollectionItemDelegate?
     
     @IBOutlet weak var crewCollectionView: UICollectionView!
     
@@ -36,7 +36,7 @@ class CrewTableViewCell: UITableViewCell {
 extension CrewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return crewImageArr.count
+        return crew.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,24 +44,38 @@ extension CrewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         let cell = crewCollectionView.dequeueReusableCell(withReuseIdentifier: "crewCollectionViewcell", for: indexPath) as! CrewCollectionViewCell
         
         // 下載演員個人照
-        let castProfilePathArrImageURL = URL(string: "https://image.tmdb.org/t/p/w154\(crewImageArr[indexPath.row])")
-        cell.crewImage.kf.setImage(with: castProfilePathArrImageURL, placeholder: UIImage(named: "profile"), options: [.transition(.fade(0.7))], progressBlock: nil)
-        // 名字
-        cell.crewNameLbl.text = crewNameArr[indexPath.row]
-        switch crewJobArr[indexPath.row] {
-        case "Director":
-            cell.JobTitleLbl.text = "導演"
-        case "Producer":
-            cell.JobTitleLbl.text = "監製"
-        case "Screenplay":
-            cell.JobTitleLbl.text = "編劇"
-        case "Writer":
-            cell.JobTitleLbl.text = "編劇"
-        default:
-            print("職業錯誤")
+        if let profilePath = crew[indexPath.row].profile_path {
+            let castProfilePathArrImageURL = URL(string: "https://image.tmdb.org/t/p/w154\(profilePath)")
+            cell.crewImage.kf.setImage(with: castProfilePathArrImageURL, placeholder: UIImage(named: "profile"), options: [.transition(.fade(0.7))], progressBlock: nil)
         }
+        
+        // 名字
+        if let name = crew[indexPath.row].name {
+            cell.crewNameLbl.text = name
+        }
+        
+        if let job = crew[indexPath.row].job {
+            switch job {
+            case "Director":
+                cell.JobTitleLbl.text = "導演"
+            case "Producer":
+                cell.JobTitleLbl.text = "監製"
+            case "Screenplay":
+                cell.JobTitleLbl.text = "編劇"
+            case "Writer":
+                cell.JobTitleLbl.text = "編劇"
+            default:
+                fatalError("switch...case 職業錯誤")
+            }
+        }
+        
         return cell
     }
     
+    // MARK: - Pass Data To MovieDetailViewController
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        delegate?.selectedCollectionItem(name: crew[indexPath.row].name ?? "", personID: crew[indexPath.row].id, cellIdentifier: cellIdentifier, job: crew[indexPath.row].job ?? "")
+    }
     
 }
