@@ -165,7 +165,7 @@
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="57.670000000000002" id="BUP-2v-80E"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="57.670000000000002" id="BUP-2v-80E"/>
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Yhn-YN-GGL" userLabel="Details Stack View">
