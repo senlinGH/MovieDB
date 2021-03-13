@@ -59,31 +59,16 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }()
 
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableview.delegate = self
-        tableview.dataSource = self
-        tableview.separatorStyle = .none    // 移除TableView的分隔符號
-        // 關掉collection滑動的bar
-        tableview.showsVerticalScrollIndicator = false
+        downloadDatas() // 下載資料
+        setupTableView()    // TableView相關設定
+        bulidGradientView() // 建立漸層的HeaderView
         blurEffectHeaderView.alpha = 0
-        
         print("電影名稱：\(data.title)")
-        
-        getVideoKey(movieID: data.id)   // 取得電影預告的Key
-        getMovieCertification(movieID: data.id) // 取得電影分級
-        getMovieDetail(movieID: data.id)    // 取得電影詳細資料
-        getCastAndCrew(movieID: data.id)
-        tableview.backgroundColor = .clear  // tableview背景顏色透明
-        
-        // 建立漸層view物件
-        gradientLayer.frame = headerImageView.bounds
-        gradientView.layer.addSublayer(gradientLayer)
-        
-        
-        
-//        print("movieID: \(data.id)")
         
     }
     
@@ -206,7 +191,28 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
+    // MARK: - 建立漸層view物件
+    fileprivate func bulidGradientView() {
+        gradientLayer.frame = headerImageView.bounds
+        gradientView.layer.addSublayer(gradientLayer)
+    }
     
+    // MARK: - TableView相關設定
+    fileprivate func setupTableView() {
+        tableview.delegate = self
+        tableview.dataSource = self
+        tableview.separatorStyle = .none    // 移除TableView的分隔符號
+        tableview.showsVerticalScrollIndicator = false  // 關掉collection滑動的bar
+        tableview.backgroundColor = .clear  // tableview背景顏色透明
+    }
+    
+    // MARK: - 下載資料檔案
+    fileprivate func downloadDatas() {
+        getVideoKey(movieID: data.id)   // 取得電影預告的Key
+        getMovieCertification(movieID: data.id) // 取得電影分級
+        getMovieDetail(movieID: data.id)    // 取得電影詳細資料
+        getCastAndCrew(movieID: data.id)
+    }
     
     
     

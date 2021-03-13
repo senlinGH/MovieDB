@@ -25,17 +25,18 @@ class OverviewViewController: UIViewController {
         navigatinBar.topItem?.title = movieTitle
         backgroundImageView.kf.setImage(with: URL(string: posterPathURL), placeholder: nil, options: [.transition(.fade(0.1))])
         backgroundImageView.contentMode = .scaleAspectFill
-        
-        // 背景圖片模糊效果
-        let blurEffect = UIBlurEffect(style: .light)
-        let blueEffectView = UIVisualEffectView(effect: blurEffect)
-        blueEffectView.frame = view.bounds
-        backgroundImageView.addSubview(blueEffectView)
-        
+        setupBlurEffectImageView()  // 建立模糊效果的背景圖片
         overviewTextView.text = overview
         
     }
     
+    // MARK: - 建立模糊效果的背景圖片
+    fileprivate func setupBlurEffectImageView() {
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        backgroundImageView.addSubview(blurEffectView)
+    }
 
     
 

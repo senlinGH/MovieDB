@@ -21,16 +21,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableview.dataSource = self
-        tableview.delegate = self
-        
+        setupTableView()  // TableView的相關設定
         settingSearchController()
-        // TableView的背景視圖為空視圖
-        tableview.backgroundView = emptyView
-        // 預設上設為隱藏
-        tableview.backgroundView?.isHidden = true
-        tableview.separatorStyle = .none    // 移除TableView的分隔符號
-        tableview.keyboardDismissMode = .onDrag // TableView 滑動關閉鍵盤
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +68,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         cell.overviewLbl.text = result[indexPath.row].overview
         cell.selectionStyle = .none //取消選取效果
         return cell
+    }
+    
+    // MARK: - TableView相關設定
+    fileprivate func setupTableView() {
+        tableview.dataSource = self
+        tableview.delegate = self
+        tableview.backgroundView = emptyView  // TableView的背景視圖為空視圖
+        tableview.backgroundView?.isHidden = true  // 預設上設為隱藏
+        tableview.separatorStyle = .none    // 移除TableView的分隔符號
+        tableview.keyboardDismissMode = .onDrag  // TableView 滑動關閉鍵盤
     }
     
    

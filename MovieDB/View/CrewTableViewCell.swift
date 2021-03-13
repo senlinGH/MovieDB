@@ -43,11 +43,15 @@ extension CrewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         
         let cell = crewCollectionView.dequeueReusableCell(withReuseIdentifier: "crewCollectionViewcell", for: indexPath) as! CrewCollectionViewCell
         
+        var crewProfilePath = ""
+        // 製作群個人照
+        if let crewProfilePath_Temp = crew[indexPath.row].profile_path {
+            crewProfilePath = crewProfilePath_Temp
+        } else { crewProfilePath = ""}
+        
         // 下載演員個人照
-        if let profilePath = crew[indexPath.row].profile_path {
-            let castProfilePathArrImageURL = URL(string: "https://image.tmdb.org/t/p/w154\(profilePath)")
-            cell.crewImage.kf.setImage(with: castProfilePathArrImageURL, placeholder: UIImage(named: "profile"), options: [.transition(.fade(0.7))], progressBlock: nil)
-        }
+        let castProfilePathArrImageURL = URL(string: "https://image.tmdb.org/t/p/w154\(crewProfilePath)")
+        cell.crewImage.kf.setImage(with: castProfilePathArrImageURL, placeholder: UIImage(named: "profile"), options: [.transition(.fade(0.7))], progressBlock: nil)
         
         // 名字
         if let name = crew[indexPath.row].name {

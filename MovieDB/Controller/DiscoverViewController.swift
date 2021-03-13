@@ -31,26 +31,14 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.prefersLargeTitles = true
-
-        myTableView.delegate = self
-        myTableView.dataSource = self
-        
-        // 載入電影資料
-        fetchPopularData(page: 1)
-        fetchNowPlayingData(page: 1)
-        fetchTopRateData(page: 1)
-        fetchUpcomingData(page: 1)
-        
-        // 設定SliderCollectionViewFlowLayout
-        setSliderCollectionViewFlowLayout()
+        navigationController?.navigationBar.prefersLargeTitles = true // 啟動大標題
+        setupTableView() // Tableview相關設定
+        downloadMovieDatas() // 下載電影資料
+        setSliderCollectionViewFlowLayout() // 頂部橫向輪播圖片的FlowLayout
         
         // 設定Page Control
         pageControl.numberOfPages = sliderImageArr.count
         pageControl.currentPage = 0
-        
-        myTableView.showsVerticalScrollIndicator = false // 隱藏TableView垂直滑動的bar
-        
     }
     
 
@@ -93,7 +81,20 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    // MARK: - TableView相關設定
+    fileprivate func setupTableView() {
+        myTableView.delegate = self
+        myTableView.dataSource = self
+        myTableView.showsVerticalScrollIndicator = false // 隱藏TableView垂直滑動的bar
+    }
     
+    // MARK: - 下載電影資料
+    fileprivate func downloadMovieDatas() {
+        fetchPopularData(page: 1)
+        fetchNowPlayingData(page: 1)
+        fetchTopRateData(page: 1)
+        fetchUpcomingData(page: 1)
+    }
     
     
     // MARK: - Get Popular Movies
