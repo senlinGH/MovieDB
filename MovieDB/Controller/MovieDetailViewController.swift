@@ -185,13 +185,17 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let moveDistance = abs(scrollView.contentOffset.y)
         let contentOffsetY = scrollView.contentOffset.y
-        let offset = contentOffsetY / 166
+        let offset = contentOffsetY / 186
+        let titleStartPoint = contentOffsetY - 279
+        let titleOffset = titleStartPoint / 31
         
         if contentOffsetY > 0 {
             // 上滑圖片漸變
             blurEffectHeaderView.alpha = offset
-            if offset > 1.53 {
+            if offset > 1.50 {
                 navigationItem.title = data.title
+                // 標題的顏色設定
+                navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 1, green: 1, blue: 1, alpha: titleOffset)]
             } else { navigationItem.title = "" }
         } else {
             // 下滑放大

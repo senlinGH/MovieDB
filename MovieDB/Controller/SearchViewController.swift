@@ -86,7 +86,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         // 告知searchController哪個物件負責更新我們搜尋的結果
         searchController.searchResultsUpdater = self
         // placeholder是在SearchBar沒有文字時，預設顯示的文字
-        searchController.searchBar.placeholder = "搜尋電影..."
+        searchController.searchBar.placeholder = "搜尋電影"
         searchController.obscuresBackgroundDuringPresentation = false
         // TableViewHeader加上SearchBar
         navigationItem.searchController = searchController
