@@ -29,7 +29,7 @@ class PopularViewController: UIViewController, UICollectionViewDelegate, UIColle
         fetchData(page: 1)
         // 讓大標題向右移
         if let navigationBar = navigationController?.navigationBar {
-            navigationBar.layoutMargins.left = 37
+            navigationBar.layoutMargins.left = 25
         }
         
         setSpinner() // 啟用旋轉指示器

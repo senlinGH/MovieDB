@@ -15,6 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 自訂返回按鈕的顏色
+        UINavigationBar.appearance().tintColor = .white
+        // 自訂Tab Bar的顏色
+        UITabBar.appearance().tintColor = UIColor(red: 0.66727298616593356, green: 0.59235528333957232, blue: 0.96848052740097046, alpha: 1)
         return true
     }
 

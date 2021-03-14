@@ -781,9 +781,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiD-k5-qQZ">
-                                                    <rect key="frame" x="290" y="11" width="70" height="33.333333333333336"/>
+                                                    <rect key="frame" x="282" y="11" width="78" height="33.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <state key="normal" title="全部顯示"/>
+                                                    <state key="normal" title="顯示更多❯">
+                                                        <color key="titleColor" red="0.66727298616593356" green="0.59235528333957232" blue="0.96848052740097046" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
                                                     <connections>
                                                         <segue destination="APe-h0-ZBd" kind="show" identifier="" id="40D-t1-EkB"/>
                                                     </connections>
@@ -888,9 +890,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slt-9I-WSg">
-                                                    <rect key="frame" x="290" y="11" width="70" height="33"/>
+                                                    <rect key="frame" x="282" y="11" width="78" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <state key="normal" title="全部顯示"/>
+                                                    <state key="normal" title="顯示更多❯">
+                                                        <color key="titleColor" red="0.66727298616593356" green="0.59235528333957232" blue="0.96848052740097046" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
                                                     <connections>
                                                         <segue destination="gvB-0p-trQ" kind="show" identifier="" id="rvl-ya-dhP"/>
                                                     </connections>
@@ -988,9 +992,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQx-fY-1ZS">
-                                                    <rect key="frame" x="290" y="11" width="70" height="33"/>
+                                                    <rect key="frame" x="282" y="11" width="78" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <state key="normal" title="全部顯示"/>
+                                                    <state key="normal" title="顯示更多❯">
+                                                        <color key="titleColor" red="0.66727298616593356" green="0.59235528333957232" blue="0.96848052740097046" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
                                                     <connections>
                                                         <segue destination="xl2-OF-xJj" kind="show" identifier="" id="zIq-5o-rm1"/>
                                                     </connections>
