@@ -13,41 +13,34 @@ import Kingfisher
 class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableview: UITableView!
-    @IBOutlet weak var placeholderHeaderImageView: UIImageView! {
-        didSet {
-            placeholderHeaderImageView.contentMode = .scaleAspectFit
-            placeholderHeaderImageView.image = UIImage(named: "placeholder")
-        }
-    }
     @IBOutlet weak var headerImageView: UIImageView! {
         didSet {
             // 取得背景海報
             if let backdropPath_Key = data.backdrop_path {
                 let backdropPathImageURL = "https://image.tmdb.org/t/p/w780\(backdropPath_Key)"
                 headerImageView.kf.setImage(with: URL(string: backdropPathImageURL), placeholder: UIImage(named: "collection_background"), options: [.transition(.fade(0.3))], progressBlock: nil)
+            } else {
+                headerImageView.image = UIImage(named: "filmPlaceholder_gary")
+                headerImageView.contentMode = .scaleAspectFill
             }
         }
     }
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var blurEffectHeaderView: UIView!
-    @IBOutlet weak var placeholderImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var blurEffectViewHeightConstraint: NSLayoutConstraint!
     
     
     var data: MovieDetailData!
     var AllGenres = [GenresInfo]()
-    
+    var cast = [CastDetail]()
+    var crew = [CrewDetail]()
     var posterPathURL = ""
     var videoKey = ""
     var certification = "未經分級"
     var runtime = ""
     var spinner = UIActivityIndicatorView()     // 建立旋轉指示器的物件
-    var cast = [CastDetail]()
-    var crew = [CrewDetail]()
-    var crewImageArr = [String]()
-    var crewNameArr = [String]()
-    var crewJobArr = [String]()
+    
     
     // 定義漸層view的物件
     let gradientLayer: CAGradientLayer = {
@@ -116,20 +109,22 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             if let posterPath_Key = data.poster_path {
                 let posterPathURL = "https://image.tmdb.org/t/p/w342" + posterPath_Key
                 cell.posterImageView.kf.setImage(with: URL(string: posterPathURL), placeholder: nil, options: [.transition(.fade(0.1))], progressBlock: nil)
-                print(posterPathURL)
-                
-                // 儲存給OverviewController的背景圖的URL
-                self.posterPathURL = posterPathURL
+                self.posterPathURL = posterPathURL  // 儲存給OverviewController的背景圖的URL
+            } else {
+                cell.posterImageView.image = UIImage(named: "filmPlaceholder_gary")
+                cell.posterImageView.contentMode = .scaleAspectFill
             }
             
             if data.overview != "" {
                 cell.moreBtn.isHidden = false
+                cell.overviewLabel.text = data.overview
             }
             else {
                 cell.moreBtn.isHidden = true
+                cell.overviewLabel.text = "無劇情簡介"
             }
             
-            cell.overviewLabel.text = data.overview
+            
             cell.AllGenres = AllGenres
             cell.voteAverage.text = "⭐️ \(data.vote_average)"
             
@@ -184,7 +179,6 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             } else { navigationItem.title = "" }
         } else {
             // 下滑放大
-            placeholderImageHeightConstraint.constant = 210 + moveDistance
             headerImageHeightConstraint.constant = 210 + moveDistance
             blurEffectViewHeightConstraint.constant = 210 + moveDistance
         }

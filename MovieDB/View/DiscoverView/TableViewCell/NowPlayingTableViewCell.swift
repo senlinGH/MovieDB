@@ -64,8 +64,7 @@ extension NowPlayingTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             let backdropPathURL = URL(string: "https://image.tmdb.org/t/p/w780" + backdropPath)
             cell.imageView.kf.setImage(with: backdropPathURL, placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
         } else {
-            cell.imageView.image = UIImage(named: "placeholder")
-            cell.imageView.contentMode = .scaleAspectFit
+            cell.imageView.image = UIImage(named: "filmPlaceholder_gary")
         }
         cell.movieTitle.text = fetchResultData[indexPath.row].title
         

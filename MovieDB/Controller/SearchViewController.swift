@@ -49,10 +49,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         
         // 電影封面海報
-                if let posterPath = result[indexPath.row].poster_path {
-                    let posterPathImageURL = URL(string: "https://image.tmdb.org/t/p/w342" + posterPath)
-                    cell.moviePosterImageView.kf.setImage(with: posterPathImageURL, placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
-                }
+        if let posterPath = result[indexPath.row].poster_path {
+            let posterPathImageURL = URL(string: "https://image.tmdb.org/t/p/w342" + posterPath)
+            cell.moviePosterImageView.kf.setImage(with: posterPathImageURL, placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
+        } else {
+            cell.moviePosterImageView.image = UIImage(named: "filmPlaceholder_gary")
+            cell.moviePosterImageView.contentMode = .scaleAspectFill
+        }
         cell.titleLabel.text = result[indexPath.row].title
         
         let voteAverage = result[indexPath.row].vote_average
@@ -65,7 +68,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             } else { cell.detailsLbl.text = "\(voteAverage)/10" }
         } else { cell.detailsLbl.text = "\(voteAverage)/10" }
         
-        cell.overviewLbl.text = result[indexPath.row].overview
+        if result[indexPath.row].overview != "" {
+            cell.overviewLbl.text = result[indexPath.row].overview
+        } else {
+            cell.overviewLbl.text = "無劇情簡介"
+        }
         cell.selectionStyle = .none //取消選取效果
         return cell
     }
@@ -103,7 +110,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             result = []
             tableview.reloadData()
             searchData(query: text)
-            print(result.count)
         }
     }
     

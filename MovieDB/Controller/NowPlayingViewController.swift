@@ -54,7 +54,8 @@ class NowPlayingViewController: UIViewController, UICollectionViewDelegate, UICo
             
             cell.imageView.kf.setImage(with: posterPathImageURL, placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
         } else {
-            cell.imageView.image = UIImage()
+            cell.imageView.image = UIImage(named: "filmPlaceholder_gary")
+            cell.imageView.contentMode = .scaleAspectFit
         }
         
         self.spinner.stopAnimating()    // 停止旋轉指示器動畫
