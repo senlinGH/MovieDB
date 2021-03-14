@@ -15,9 +15,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="Oi9-23-Bok">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreenBG" translatesAutoresizingMaskIntoConstraints="NO" id="Oi9-23-Bok">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MovieDB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgH-tI-X3k">
+                                <rect key="frame" x="121" y="425.5" width="172" height="45"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -25,6 +31,8 @@
                             <constraint firstItem="Oi9-23-Bok" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="LY5-ob-4Pg"/>
                             <constraint firstAttribute="bottom" secondItem="Oi9-23-Bok" secondAttribute="bottom" id="bTS-r4-AAy"/>
                             <constraint firstItem="Oi9-23-Bok" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qBG-J0-ITF"/>
+                            <constraint firstItem="hgH-tI-X3k" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ri0-9O-KNN"/>
+                            <constraint firstItem="hgH-tI-X3k" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="sIX-kR-uVP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -35,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchScreenImage" width="781" height="1691"/>
+        <image name="launchScreenBG" width="375" height="812"/>
     </resources>
 </document>
