@@ -38,9 +38,11 @@ class UpcomingTableViewCell: UITableViewCell {
         
         let flowLayout = myCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
         let width = UIScreen.main.bounds.width
-        let height = width + 30
+        let height = width * 1.5
         flowLayout?.itemSize = CGSize(width: width, height: height)
         flowLayout?.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        // 約束CollectionView的高度條件
+        myCollectionView.heightAnchor.constraint(equalToConstant: width * 1.5).isActive = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
