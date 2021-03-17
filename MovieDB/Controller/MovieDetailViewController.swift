@@ -136,7 +136,11 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "videoCell", for: indexPath) as! VideoTableViewCell
-            cell.playerView.load(withVideoId: videoKey)
+            if videoKey != "" {
+                cell.playerView.load(withVideoId: videoKey)
+            } else {
+                print("沒預告")
+            }
             cell.selectionStyle = .none //取消選取效果
             return cell
         case 3:
@@ -147,9 +151,6 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "crewCell", for: indexPath) as! CrewTableViewCell
-            //        cell.crewImageArr = self.crewImageArr
-            //        cell.crewNameArr = self.crewNameArr
-            //        cell.crewJobArr = self.crewJobArr
             cell.crew = self.crew
             cell.selectionStyle = .none //取消選取效果
             cell.delegate = self
