@@ -380,19 +380,17 @@
                                                             <rect key="frame" x="0.0" y="40" width="345" height="213"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops..! 抱歉暫時沒有預告" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETe-fE-JXh">
-                                                                    <rect key="frame" x="27" y="91" width="289.33333333333331" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                                                    <nil key="textColor"/>
+                                                                    <rect key="frame" x="56" y="94.666666666666657" width="233" height="24"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                                    <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
-                                                                <constraint firstItem="ETe-fE-JXh" firstAttribute="leading" secondItem="wjF-uw-caT" secondAttribute="leading" constant="27" id="48K-w5-wMz"/>
                                                                 <constraint firstAttribute="height" constant="213" id="Qvf-dx-77f"/>
-                                                                <constraint firstAttribute="bottom" secondItem="ETe-fE-JXh" secondAttribute="bottom" constant="92" id="jeE-uk-qHl"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ETe-fE-JXh" secondAttribute="trailing" constant="20" symbolic="YES" id="rCq-UU-QRh"/>
-                                                                <constraint firstItem="ETe-fE-JXh" firstAttribute="top" secondItem="wjF-uw-caT" secondAttribute="top" constant="91" id="wig-Ut-Kwp"/>
+                                                                <constraint firstItem="ETe-fE-JXh" firstAttribute="centerX" secondItem="wjF-uw-caT" secondAttribute="centerX" id="eLq-xd-4fM"/>
+                                                                <constraint firstItem="ETe-fE-JXh" firstAttribute="centerY" secondItem="wjF-uw-caT" secondAttribute="centerY" id="od9-lx-PCa"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
