@@ -714,7 +714,7 @@
         <!--關於-->
         <scene sceneID="yld-N1-rnr">
             <objects>
-                <viewController id="SMY-4y-yNQ" sceneMemberID="viewController">
+                <viewController id="SMY-4y-yNQ" customClass="AboutViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dYO-Ta-vbi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -743,43 +743,51 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="fXF-TK-LlL" userLabel="Email and GitHub Stack View">
-                                <rect key="frame" x="82" y="473" width="211" height="80"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_icon" translatesAutoresizingMaskIntoConstraints="NO" id="sR4-vM-J9Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="4UK-vs-M8G"/>
-                                            <constraint firstAttribute="height" constant="80" id="pr4-xb-9jI"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9XM-HR-N8H">
-                                        <rect key="frame" x="131" y="0.0" width="80" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="ScC-5u-CT4"/>
-                                            <constraint firstAttribute="height" constant="80" id="XsE-D9-28Q"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如有任何問題歡迎與我們聯絡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hne-nf-of3">
                                 <rect key="frame" x="88" y="678" width="199" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="9NO-uh-4Q7">
+                                <rect key="frame" x="82" y="473" width="211" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku3-Ko-UFZ" userLabel="Email Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="yOK-OH-1pE"/>
+                                            <constraint firstAttribute="width" constant="80" id="zYQ-aC-xfb"/>
+                                        </constraints>
+                                        <state key="normal" image="email_icon"/>
+                                        <connections>
+                                            <action selector="emailBtnAction:" destination="SMY-4y-yNQ" eventType="touchUpInside" id="ecg-vv-Xud"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bl-c5-2Px" userLabel="GitHub Button">
+                                        <rect key="frame" x="131" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="FNz-Lk-UOd"/>
+                                            <constraint firstAttribute="height" constant="80" id="tQ9-0p-8o7"/>
+                                        </constraints>
+                                        <state key="normal" image="github_icon"/>
+                                        <connections>
+                                            <action selector="gitHubBtnAction:" destination="SMY-4y-yNQ" eventType="touchUpInside" id="AQd-Ui-gxa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="hne-nf-of3" firstAttribute="leading" secondItem="q19-0K-a8X" secondAttribute="leading" constant="88" id="3m8-7n-eyL"/>
-                            <constraint firstItem="fXF-TK-LlL" firstAttribute="leading" secondItem="q19-0K-a8X" secondAttribute="leading" constant="82" id="4Wr-9x-AlP"/>
                             <constraint firstItem="XTg-bT-8y6" firstAttribute="leading" secondItem="q19-0K-a8X" secondAttribute="leading" constant="47" id="KA4-jB-seL"/>
-                            <constraint firstItem="fXF-TK-LlL" firstAttribute="top" secondItem="XTg-bT-8y6" secondAttribute="bottom" constant="30" id="Q7D-a6-yDA"/>
+                            <constraint firstItem="9NO-uh-4Q7" firstAttribute="leading" secondItem="q19-0K-a8X" secondAttribute="leading" constant="82" id="Mi9-7g-yfG"/>
+                            <constraint firstItem="9NO-uh-4Q7" firstAttribute="top" secondItem="XTg-bT-8y6" secondAttribute="bottom" constant="30" id="PiA-6k-yka"/>
                             <constraint firstItem="hUQ-dI-fV7" firstAttribute="centerX" secondItem="dYO-Ta-vbi" secondAttribute="centerX" id="RW5-De-P5r"/>
+                            <constraint firstItem="q19-0K-a8X" firstAttribute="trailing" secondItem="9NO-uh-4Q7" secondAttribute="trailing" constant="82" id="XNc-fv-csp"/>
                             <constraint firstAttribute="trailing" secondItem="XTg-bT-8y6" secondAttribute="trailing" constant="47" id="YKU-9f-RoW"/>
                             <constraint firstItem="q19-0K-a8X" firstAttribute="trailing" secondItem="hne-nf-of3" secondAttribute="trailing" constant="88" id="eEn-ZV-Yd4"/>
                             <constraint firstItem="hUQ-dI-fV7" firstAttribute="top" secondItem="q19-0K-a8X" secondAttribute="top" constant="80" id="fN7-Yd-llK"/>
-                            <constraint firstItem="q19-0K-a8X" firstAttribute="trailing" secondItem="fXF-TK-LlL" secondAttribute="trailing" constant="82" id="fWz-cc-Dnf"/>
                             <constraint firstItem="XTg-bT-8y6" firstAttribute="top" secondItem="hUQ-dI-fV7" secondAttribute="bottom" constant="63" id="l9k-C5-dsw"/>
                             <constraint firstItem="q19-0K-a8X" firstAttribute="bottom" secondItem="hne-nf-of3" secondAttribute="bottom" constant="33" id="mOf-EF-7PD"/>
                             <constraint firstItem="hUQ-dI-fV7" firstAttribute="leading" secondItem="q19-0K-a8X" secondAttribute="leading" constant="82" id="qTy-YJ-GCR"/>
@@ -1814,7 +1822,7 @@
     <resources>
         <image name="TMDB_Logo" width="1200" height="869"/>
         <image name="collection_background" width="1920" height="1080"/>
-        <image name="email_icon" width="126" height="128"/>
+        <image name="email_icon" width="128" height="128"/>
         <image name="film" catalog="system" width="128" height="93"/>
         <image name="github_icon" width="512" height="512"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
