@@ -42,18 +42,6 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var spinner = UIActivityIndicatorView()     // 建立旋轉指示器的物件
     
     
-    // 定義漸層view的物件
-    let gradientLayer: CAGradientLayer = {
-        let layer = CAGradientLayer()
-        // 上層顏色透明, 下層顏色systemBackground
-        layer.colors = [UIColor.clear.cgColor, UIColor.systemBackground.cgColor]
-        layer.locations = [0.8, 1]
-        return layer
-    }()
-
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,11 +54,11 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     // 延伸漸層效果
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        gradientLayer.frame = headerImageView.bounds
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//
+//        gradientLayer.frame = headerImageView.bounds
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.largeTitleDisplayMode = .never   // 停用大標題
@@ -188,8 +176,13 @@ class MovieDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: - 建立漸層view物件
     fileprivate func bulidGradientView() {
-        gradientLayer.frame = headerImageView.bounds
-        gradientView.layer.addSublayer(gradientLayer)
+        
+        let layer = CAGradientLayer()
+        let width = UIScreen.main.bounds.width
+        layer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: 210.0)
+        layer.colors = [UIColor.clear.cgColor, UIColor.systemBackground.cgColor]
+        layer.locations = [0.8, 1]
+        gradientView.layer.addSublayer(layer)
     }
     
     // MARK: - TableView相關設定
