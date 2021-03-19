@@ -1003,9 +1003,6 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jrI-nO-byn">
                                                     <rect key="frame" x="0.0" y="41" width="375" height="209"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="209" id="Uql-ta-taT"/>
-                                                    </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="trc-6q-O28">
                                                         <size key="itemSize" width="298" height="209"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>

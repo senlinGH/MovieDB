@@ -39,6 +39,14 @@ class NowPlayingTableViewCell: UITableViewCell {
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         myCollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
         */
+        
+        let flowLayout = myCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        let width = (UIScreen.main.bounds.width) - 100.0
+        let height = width / 1.4
+        flowLayout?.itemSize = CGSize(width: width, height: height)
+        flowLayout?.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        // 約束CollectionView的高度條件
+        myCollectionView.heightAnchor.constraint(equalToConstant: height).isActive = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
