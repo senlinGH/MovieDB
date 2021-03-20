@@ -20,10 +20,23 @@ class AboutViewController: UIViewController {
             UIApplication.shared.open(url)
         }
     }
+    @IBOutlet weak var tmdbLogoeTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tmdbLogoBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var statementLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setTMDBLogoConstraint()
+        statementLbl.text = "此應用程式使用TMDB公開的API。\n嚴正聲明此應用程式不是TMDB認可的官方應用程式。"
+    }
+    
+    fileprivate func setTMDBLogoConstraint() {
+        let screenHeight = UIScreen.main.bounds.height
+        if screenHeight <= 667 {
+            tmdbLogoeTopConstraint.constant = 40
+            tmdbLogoBottomConstraint.constant = 30
+        }
     }
 
 
