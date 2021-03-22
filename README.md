@@ -3,5 +3,5 @@
 
 
 <p>
-  <img src="https://github.com/senlinGH/MovieDB/blob/master/MovieDB%20Github%20README.jpeg?raw=true" width="410">
+  <img src="https://github.com/senlinGH/MovieDB/blob/master/MovieDB%20Github%20README.jpeg?raw=true" width="610">
 </p>
