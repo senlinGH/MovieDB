@@ -5,3 +5,13 @@
 <p>
   <img src="https://github.com/senlinGH/MovieDB/blob/master/MovieDB%20Github%20README.jpeg?raw=true" width="610">
 </p>
+
+## 🔎 About
+MovieDB App 使用 Swift 5 和 Xcode 11
+
+Cocoa Pods :
+- Kingfisher
+- youtube_ios_player_helper
+
+
+
