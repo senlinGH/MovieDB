@@ -8,6 +8,7 @@
 
 ## 🔎 About
 MovieDB App 使用 Swift 5 和 Xcode 11
+支援 iOS 13 以上的深色模式
 
 Cocoa Pods :
 - Kingfisher
