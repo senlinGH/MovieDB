@@ -69,6 +69,7 @@ extension NowPlayingTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             cell.imageView.image = UIImage(named: "filmPlaceholder_gary")
         }
         cell.movieTitle.text = fetchResultData[indexPath.row].title
+        print(fetchResultData[indexPath.row].title)
         
         return cell
     }
