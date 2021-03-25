@@ -1021,10 +1021,13 @@
                                                                         <rect key="frame" x="10" y="10" width="278" height="189"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXo-rp-q2Q">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="278" height="158.66666666666666"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="278" height="158"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gYa-Nv-9Yh">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="278" height="158.66666666666666"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="278" height="158"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" secondItem="gYa-Nv-9Yh" secondAttribute="height" multiplier="139:79" id="R6e-el-6DE"/>
+                                                                                        </constraints>
                                                                                     </imageView>
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1036,7 +1039,7 @@
                                                                                 </constraints>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11L-UY-Xxq">
-                                                                                <rect key="frame" x="0.0" y="168.66666666666666" width="278" height="20.333333333333343"/>
+                                                                                <rect key="frame" x="0.0" y="168" width="278" height="21"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
